@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Added viewport meta tag for mobile responsiveness (include in HTML <head>) */
+/* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+body {
+    min-height: 100vh;
+    /* Changed from height to min-height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #CAF0F8;
+    color: #03045E;
+    padding: 1rem;
+    /* Added safe spacing */
+}
+
+#name {
+    margin: 2vh 0;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    /* Responsive font scaling */
+}
+
+.gameContainer {
+    width: min(90vw, 600px);
+    /* Limits maximum width */
+    aspect-ratio: 1/1;
+    /* Maintain square shape */
+    margin: 1rem auto;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    aspect-ratio: 1/1;
+    /* Maintain square shape */
+    background-color: #ADE8F4;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    font-size: clamp(3rem, 10vw, 5rem);
+    /* Responsive font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    /* Added interaction feedback */
+}
+
+.box:hover {
+    transform: scale(1.02);
+}
+
+#resetBtn {
+    padding: 0.8em 1.5em;
+    /* Relative padding */
+    background-color: #023E8A;
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    /* Responsive text */
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+#winmsg {
+    position: fixed;
+    /* Changed from absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(90%, 400px);
+    /* Responsive width */
+    background-color: #48CAE4;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    z-index: 10;
+    display: none;
+    /* Start hidden */
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 0.3rem solid #03045E;
+}
+
+#para {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    line-height: 1.4;
+}
+
+#newgame {
+    padding: 0.8em 1.5em;
+    border-radius: 1rem;
+    background-color: #023E8A;
+    color: white;
+    border: none;
+    font-size: inherit;
+    /* Inherits from parent */
+    cursor: pointer;
+}
+
+/* Media Query for Mobile Landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+    .gameContainer {
+        width: min(90vh, 400px);
+        /* Use viewport height for landscape */
+    }
+}
+
+/* Media Query for Very Small Screens */
+@media (max-width: 480px) {
+    .box {
+        border-radius: 0.5rem;
+        font-size: 2.5rem;
+    }
+
+    #winmsg {
+        padding: 1.5rem;
+    }
+}
